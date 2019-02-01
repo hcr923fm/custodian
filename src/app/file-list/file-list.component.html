@@ -1,3 +1,17 @@
-<p>
-  file-list works!
-</p>
+<div class="clr-col-12">
+  <clr-datagrid>
+    <clr-dg-column>Date</clr-dg-column>
+    <clr-dg-column>Recording Start Time</clr-dg-column>
+    <clr-dg-column>Download</clr-dg-column>
+
+    <clr-dg-placeholder>Couldn't find any recordings in this timeframe!</clr-dg-placeholder>
+
+    <clr-dg-row *clrDgItems="let audio_file of files" [clrDgItem]="audio_file">
+      <clr-dg-cell>{{audio_file.start_date | date:'E, dd LLL yyyy'}}</clr-dg-cell>
+      <clr-dg-cell>{{audio_file.start_date | date:'HH:mm'}}</clr-dg-cell>
+      <clr-dg-cell>
+        <a href="{{audio_file.download_link}}" download="{{audio_file.file_name}}">Download</a>
+      </clr-dg-cell>
+    </clr-dg-row>
+  </clr-datagrid>
+</div>

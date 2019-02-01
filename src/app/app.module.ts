@@ -7,6 +7,7 @@ import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomepageComponent } from './homepage/homepage.component';
 import { FileListComponent } from './file-list/file-list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   {
@@ -14,7 +15,7 @@ const routes: Routes = [
     component: HomepageComponent
   },
   {
-    path: "/list",
+    path: "list",
     component: FileListComponent
   },
   {
@@ -33,6 +34,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
+    HttpClientModule,
     ClarityModule,
     BrowserAnimationsModule
   ],
