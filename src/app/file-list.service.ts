@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AudioFile } from './audio-file';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -32,7 +33,7 @@ export class FileListService {
 
   private updateFileList(): Promise<AudioFile[]> {
 
-    return this.httpClient.get<any>(`//${process.env["CUSTODIAN_HOST"]}:8080/file_list`)
+    return this.httpClient.get<any>(`//${environment.custodian_host}:8080/file_list`)
       .toPromise()
       .then((file_list) => {
         return <string[]>file_list
@@ -44,7 +45,7 @@ export class FileListService {
         this.last_check_time = new Date()
         return file_names.map((file_name) => {
           return <AudioFile>{
-            download_link: `//${process.env["CUSTODIAN_HOST"]}:8080/file/${file_name}`,
+            download_link: `//${environment.custodian_host}:8080/file/${file_name}`,
             file_name: file_name,
             start_date: this.parseFileName(file_name)
           }
