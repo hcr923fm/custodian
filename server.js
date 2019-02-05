@@ -4,11 +4,13 @@ const path = require('path');
 const fs = require('fs')
 //import * as environment from './src/environments/environment'
 const dotenv = require('dotenv').config()
+const cors = require('cors')
 
 const app = express();
 
 // Serve only the static files form the dist directory
 app.use(express.static(__dirname + '/dist/custodian'));
+app.use(cors())
 
 app.get("/file_list", function (req, res) {
     let file_names = fs.readdirSync(process.env["AUDIO_FILE_DIRECTORY"])
